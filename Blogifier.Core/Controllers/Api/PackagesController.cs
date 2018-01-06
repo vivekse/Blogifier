@@ -24,30 +24,30 @@ namespace Blogifier.Core.Controllers.Api
         }
 
         [HttpPut("enable/{id}")]
-        public async Task Enable(string id)
+        public void Enable(string id)
         {
             var disabled = Disabled();
             if (disabled != null && disabled.Contains(id))
             {
                 disabled.Remove(id);
-                await _db.CustomFields.SetCustomField(CustomType.Application, 0, Constants.DisabledPackages, string.Join(",", disabled));
+                _db.CustomFields.SetCustomField(CustomType.Application, 0, Constants.DisabledPackages, string.Join(",", disabled));
             }
         }
 
         [HttpPut("disable/{id}")]
-        public async Task Disable(string id)
+        public void Disable(string id)
         {
             var disabled = Disabled();
             if (disabled == null)
             {
-                await _db.CustomFields.SetCustomField(CustomType.Application, 0, Constants.DisabledPackages, id);
+                _db.CustomFields.SetCustomField(CustomType.Application, 0, Constants.DisabledPackages, id);
             }
             else
             {
                 if (!disabled.Contains(id))
                 {
                     disabled.Add(id);
-                    await _db.CustomFields.SetCustomField(CustomType.Application, 0, Constants.DisabledPackages, string.Join(",", disabled));
+                    _db.CustomFields.SetCustomField(CustomType.Application, 0, Constants.DisabledPackages, string.Join(",", disabled));
                 }
             }
         }

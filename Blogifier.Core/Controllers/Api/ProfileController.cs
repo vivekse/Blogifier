@@ -21,10 +21,10 @@ namespace Blogifier.Core.Controllers.Api
         // PUT: api/profile/setcustomfield
         [HttpPut]
         [Route("setcustomfield")]
-        public async Task SetCustomField([FromBody]CustomFieldItem item)
+        public void SetCustomField([FromBody]CustomFieldItem item)
         {
             var profile = GetProfile();
-            await _db.CustomFields.SetCustomField(CustomType.Profile, profile.Id, item.CustomKey, item.CustomValue);
+            _db.CustomFields.SetCustomField(CustomType.Profile, profile.Id, item.CustomKey, item.CustomValue);
         }
 
         Profile GetProfile()

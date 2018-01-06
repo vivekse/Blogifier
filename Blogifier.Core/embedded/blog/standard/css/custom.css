@@ -1,0 +1,20 @@
+﻿body {
+    padding-bottom: 40px;
+}
+
+.blog-footer {
+    border-top: 1px solid #d8d5d3;
+    color: #000;
+    font-size: .75rem;
+    padding: 1.5rem 0 2rem 0;
+    text-transform: uppercase;
+    height: 30px;
+    bottom: 0;
+    position: absolute;
+    width: 100%;
+    background: #dedede;
+}
+
+    .blog-footer p {
+        width: 100%;
+    }

@@ -11,6 +11,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Serilog;
 using Serilog.Events;
+using System;
+using Microsoft.AspNetCore.HttpOverrides;
 
 namespace Blogifier
 {
@@ -30,8 +32,8 @@ namespace Blogifier
 
         public void ConfigureServices(IServiceCollection services)
         {
-            System.Action<DbContextOptionsBuilder> databaseOptions = options => 
-                options.UseSqlite(Configuration.GetConnectionString("DefaultConnection"));
+            System.Action<DbContextOptionsBuilder> databaseOptions = options =>
+                options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection"));
 
             services.AddDbContext<ApplicationDbContext>(databaseOptions);
 
@@ -67,6 +69,8 @@ namespace Blogifier
 
             app.UseStaticFiles();
 
+            app.UseForwardedHeaders(new ForwardedHeadersOptions { ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto });
+
             app.UseAuthentication();
 
             app.UseETagger();
@@ -94,7 +98,10 @@ namespace Blogifier
                         }
                     }
                 }
-                catch { }
+                catch (Exception ex)
+                {
+
+                }
             }
         }
     }

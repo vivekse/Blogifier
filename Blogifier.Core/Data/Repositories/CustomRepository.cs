@@ -51,7 +51,7 @@ namespace Blogifier.Core.Data.Repositories
             return field == null || field.CustomValue == null ? string.Empty : field.CustomValue;
         }
 
-        public Task SetCustomField(CustomType customType, int parentId, string key, string value)
+        public void SetCustomField(CustomType customType, int parentId, string key, string value)
         {
             var dbField = _db.CustomFields
                 .Where(f => f.CustomType == customType && f.ParentId == parentId && f.CustomKey == key)
@@ -74,7 +74,7 @@ namespace Blogifier.Core.Data.Repositories
                     LastUpdated = SystemClock.Now()
                 });
             }
-            return _db.SaveChangesAsync();
+            _db.SaveChanges();
         }
 
         Dictionary<string, string> Load(IQueryable<CustomField> dbFields)
