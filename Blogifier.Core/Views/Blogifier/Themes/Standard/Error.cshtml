@@ -13,7 +13,7 @@
             statusmessage = "Forbidden";
             break;
         case 404:
-            statusmessage = "Page not found";
+            statusmessage = "Sorry something just went wrong!";
             break;
         case 408:
             statusmessage = "The server timed out waiting for the request";
@@ -31,5 +31,6 @@
     <div class="page-content container">
         <h1>ERROR @Model</h1>
         <p>@statusmessage</p>
+        <a href="~/" class="btn btn-block btn-outline-secondary">Go back to blog</a>
     </div>
 </div>

@@ -32,12 +32,12 @@ namespace Newsletter
                 if (!emails.Contains(item.CustomValue))
                 {
                     emails.Add(item.CustomValue);
-                    await _db.CustomFields.SetCustomField(CustomType.Application, 0, item.CustomKey, string.Join(",", emails));
+                    _db.CustomFields.SetCustomField(CustomType.Application, 0, item.CustomKey, string.Join(",", emails));
                 }
             }
             else
             {
-                await _db.CustomFields.SetCustomField(CustomType.Application, 0, item.CustomKey, item.CustomValue);
+                _db.CustomFields.SetCustomField(CustomType.Application, 0, item.CustomKey, item.CustomValue);
             }
         }
 
@@ -80,7 +80,7 @@ namespace Newsletter
             if (emails != null && emails.Contains(id))
             {
                 emails.Remove(id);
-                await _db.CustomFields.SetCustomField(CustomType.Application, 0, key, string.Join(",", emails));
+                _db.CustomFields.SetCustomField(CustomType.Application, 0, key, string.Join(",", emails));
             }
         }
 

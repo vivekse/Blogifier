@@ -42,6 +42,11 @@ namespace Blogifier.Core.Middleware
 
             if (path.Contains(".embedded.", StringComparison.OrdinalIgnoreCase))
             {
+                if (!_resources.ContainsKey(path))
+                {
+                    _logger.LogError(string.Format("Error processing embedded resource ({0}) : {1}", path, "Could not find resource."));
+                    return;
+                }
                 try
                 {
                     var resource = _resources[path];
