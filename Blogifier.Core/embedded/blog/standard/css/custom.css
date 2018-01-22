@@ -10,11 +10,15 @@
     text-transform: uppercase;
     height: 30px;
     bottom: 0;
-    position: absolute;
+    position: fixed;
     width: 100%;
     background: #dedede;
 }
 
     .blog-footer p {
         width: 100%;
+    }
+
+    a, a:hover, a:focus{
+        color:inherit;
     }

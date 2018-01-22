@@ -1,11 +1,29 @@
-﻿<main class="page-category">
+﻿@using Blogifier.Core.Common
+
+<main class="page-category">
     @*<header class="page-cover" style="background-image: url('/embedded/lib/img/header.jpg')">
-        <h2 class="page-cover-title"></h2>
-        <p class="page-cover-desc">Category</p>
-    </header>*@
+            <h2 class="page-cover-title"></h2>
+            <p class="page-cover-desc">Category</p>
+        </header>*@
     <div class="page-content">
         <div class="container">
-           This is new page content.
+            This is new page content.
         </div>
     </div>
 </main>
+<div class="page-error" style="background-image: url('@BlogSettings.Cover')">
+    <div class="page-content container">
+        <h1>Hello</h1>
+        <p>Have a question or want information? <a class="link-underline" href="mailto:contact@projectcodify.com">Get In Touch</a> </p>
+        <p>contact@projectcodify.com</p>
+        <a href="~/" class="btn btn-block btn-outline-secondary">Go back to blog</a>
+    </div>
+</div>
+<style>
+    .page-content {
+        text-transform: initial !important;
+    }
+    a.link-underline, a.link-underline:hover, a.link-underline:focus  {
+        text-decoration:underline !important;
+    }
+</style>
